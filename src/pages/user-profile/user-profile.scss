@@ -1,0 +1,156 @@
+page-user-profile {
+    ion-content{ background:  #fff;}
+    .bg{
+        background: #fff;
+    }
+    .owner-pro-bnr{width: auto; height: 162px; overflow: hidden; margin: 0 auto;}
+    .owner-pro-bnr img{ object-fit: cover; width: 100%; height: 100%; position: relative;}
+    .owner-pic-area{ position: absolute; z-index: 100; top: 34px; left: 0; right: 0;}
+    .owner-pic{ width: 75px; height: 75px; margin: 0 auto; border: 3px solid #ddd; border-radius: 50px;   position: relative; }
+    .owner-pic img{ object-fit: cover; border-radius: 50px; overflow: hidden;}
+    
+    .edit-circle{ width: 30px; height: 30px; position: absolute; z-index: 100; border-radius: 50px; top: -5px; right: -12px; background: #4cd623; border: 1px solid #ffffff; display: flex; align-items: center; justify-content: center; color: #fff;}
+    .owner-pro-bnr h4{ color: #000; margin: 0.5rem 0 0 0; font-weight: 400; font-size: 1.88rem; }
+    .owner-pro-bnr p{ color: #000; margin: 0; font-weight: 300; }
+    
+    .con-info{ background:#fff;}
+    .con-info .info-c{
+        font-size: 18px;
+        background: #ccc;   
+        color: #000;
+        padding: .5rem 1.3rem;
+        font-weight: 600;
+        margin-bottom: 10px;  
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .con-info h3 img{ width: auto; height: 24px; margin-right: 1rem;}
+    .con-info .item{ background: none; border-bottom: 1px solid #a09f9f; padding-left: 16px; padding-right: 16px; } 
+    
+    .item-list{padding: 0 16px;}
+    .item-list .item{ color: #000; padding-left: 0; padding-right: 0; border-bottom: 0;}
+    .item-list .item .item-inner { padding-right:0;}
+    .item-list span{
+        display: block;
+        font-size: 15px;
+        font-weight: 500;
+        padding-top: 10px;
+        color: #00ace0;
+    }
+    
+    .item-list .item img{ margin-right: 0 !important; width: auto; height: 18px;}
+    .item-list .item .item-inner .input-wrapper .label { margin: 0;}
+    .item-list .item .item-inner .input-wrapper .label p{ font-weight: 400; display: flex; 
+        align-items: center; color: #464545; padding-top: 1rem; padding-bottom: 0px;; font-size: 1.5rem;}
+    .item-list .item .item-inner .input-wrapper .label p .icon{ padding-right: 1rem;}
+    .item-list .item .item-inner .input-wrapper .label p img{ width: auto; height: 16px; padding-right: 0.8rem;}
+    
+    .item-list .item :last-child{ border-bottom: none !important;}
+    .item-list .item .item-inner:last-child{ border-bottom: none !important;}
+    
+    .list-md {
+        margin: 0px 0 5px;
+    }
+    .under-menu{ width: auto; padding-left: 16px;}
+        .under-menu p{ color: #000; padding: 0.4rem !important;}
+        .list-header{ background: #dbdbdb;  border-bottom:0; text-transform: inherit;}
+    
+        .label{ color: #4f4f4f; font-size: 1.7rem; font-weight: 600; }
+        .card-content{ padding-top: 0; padding-bottom: 0;}
+        .new-arrival {
+            overflow-x: scroll;
+            display: -webkit-box;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            padding: 10px 0;
+            margin: 0px 3px;
+        }
+        .new-arrival .card{ width: 245px;}
+        .new-arrival .card:first-child{ margin-top: 0;}
+        .new-arrival .card img{ padding: 1.5rem;}
+        .card-pic{height: 200px; width: auto; margin: 0 auto;}
+        .new-arrival .card .card-content .row .col .card-title{ 
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            text-align: center;
+        }
+        .star-area{width: auto;}
+        .star-area .icon{ color: #f67401;}
+        .star-area .rate{ font-size: 1.3rem;}
+        .price{ color: #555; font-weight: 600; font-size: 1.6rem;display: inline-block;margin-top: 7px;}
+        .button{ padding: 0; margin: 0; background: none; box-shadow: none; height: auto;}
+        .button:hover:not(.disable-hover){ background-color: transparent; }
+        .button .button-inner img{ padding: 0 0.2rem 0 0; width: 21px; }
+        .like-nmbr{ color: #999999; font-size: 1.2rem;}
+        .like-total{display: flex; justify-content: space-between; align-items: center;}
+        .like-area{width: auto; display: flex; align-items: center; flex-wrap: nowrap; flex-direction: column;}
+        .like-area h3{ font-weight: 500; font-size: 1.3rem;}
+        .social-area{width: auto; display: inline-flex; float: right; }
+        .social-area img{ width: 28px; height: 28px; padding: 0 !important; margin: 1rem 0.3rem;}      
+        .scroll-content{
+            padding-bottom: 60px;
+ 
+        }
+
+
+        .following
+        {
+            overflow-x: scroll;
+            display: -webkit-box;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .following .card 
+        {
+            max-width: 146px;
+            margin-top: 0px;
+        }
+
+        .following .card .card-title{
+            font-size: 14px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            padding: 0px 0;
+   
+        }
+
+        .follow-btn{
+            background-color: #2cb115;
+            border-radius: 8px;
+            padding: 10px 25px !important;
+            font-size: 11px;
+            margin-bottom: 13px !important;
+            margin: 3px auto;
+            display: block;
+        }
+
+       .follow-btn2 {
+            background-color: #2cb115;
+            border-radius: 8px;
+            padding: 10px 10px !important;
+            font-size: 11px;
+            margin-top: 6px;
+            margin: 4px auto;
+            display: block;
+       }
+
+       .list-ios {
+        margin: -1px 0 0px;
+    }
+}

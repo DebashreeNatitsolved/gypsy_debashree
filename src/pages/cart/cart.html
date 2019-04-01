@@ -1,0 +1,44 @@
+<!--
+  Generated template for the CartPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title> Cart </ion-title>   
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+<div *ngIf="productList && getcart==1" class="margin" >
+<ion-card *ngFor="let product of productList" class="main-area2">
+  
+  <ion-item >
+    <ion-thumbnail item-start (click)="gotoDetails(product.Product.id)">
+       
+      <img style="height: 80px;width: 80px;" src="{{imageurl+product.ProductImage}}" alt="">
+    
+    </ion-thumbnail>
+    
+    <h2>{{product.Product.product_name}}</h2>
+    <p>{{this.strip(this.br2nl(product.Product.product_description))}}</p>
+    <h2 class="price">$ {{product.Product.price}}</h2>
+     <button ion-button  class="btn-dark" (click)="openWithInAppBrowser(product.Product.url)">
+      <ion-icon name="cart" ></ion-icon> Buy It</button>   
+  <button ion-button (click)="removeItem(product.Cart.id)" class="btn-primary">
+      <ion-icon name="trash"></ion-icon> Remove</button>
+  </ion-item> 
+</ion-card>
+</div>
+
+<div *ngIf="!productList &&  getcart==0">
+  <h4 style="text-align:center">No Result Found!!!</h4>
+</div>
+ 
+</ion-content>

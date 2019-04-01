@@ -1,0 +1,50 @@
+
+
+<ion-content padding class="login-page">
+
+	<div class="logo">
+		<img src="assets/img/appicon.png" alt="Ionic Logo">
+	</div>
+
+	<form [formGroup]="rForm" novalidate>
+		<ion-list>
+	
+			<ion-item>
+				<ion-input type="text" formControlName="first_name" name="first_name"  value="" placeholder="First Name" required></ion-input>
+			</ion-item>
+			<p *ngIf="!rForm.controls['first_name'].valid && rForm.controls['first_name'].touched" ion-text color="danger" >First Name is required </p>
+			<ion-item>
+				<ion-input type="text" formControlName="last_name"  name="last_name" value="" placeholder="Last Name" required></ion-input>
+			</ion-item>
+			<p *ngIf="!rForm.controls['last_name'].valid && rForm.controls['last_name'].touched" ion-text color="danger">Last Name is required </p>
+			<ion-item>
+				<ion-input type="email" formControlName="email_address"  name="email_address" value="" placeholder="Email" required (ngModelChange)="checkEmail($event)"></ion-input>
+			</ion-item>
+			<p *ngIf="!rForm.controls['email_address'].valid && rForm.controls['email_address'].touched" ion-text color="danger">Email is required </p>			
+			<p *ngIf="!isValidEmail" ion-text color="danger">Please enter valid email id. </p>
+			<p *ngIf="!checkEmailExist" ion-text color="danger">This email already exist. </p>
+			<ion-item>
+				<ion-input type="password" formControlName="password" name="password"  placeholder="Password" required></ion-input>
+			</ion-item>
+			<p *ngIf="!rForm.controls['password'].valid && rForm.controls['password'].touched" ion-text color="danger">Password is required </p>
+			<ion-item>
+				<ion-input type="password" formControlName="conf_password" name="conf_password"  placeholder="Confirm password" required (ngModelChange)="checkpassword($event,rForm.value)"></ion-input>
+			</ion-item>
+			<p *ngIf="!rForm.controls['conf_password'].valid && rForm.controls['conf_password'].touched" ion-text color="danger">Confirm Password is required </p>
+			<p *ngIf="!passwordmatch" ion-text color="danger">Password and Confirm password not match </p>
+			
+			<button ion-button class="btn-primary" [disabled]="!rForm.valid || !passwordmatch || !isValidEmail || !checkEmailExist" (click)="signup(rForm.value)" block>Sign up</button>
+			<p class="gray-text">Clicking Sign up button you are agree to our terms & conditions</p>
+		</ion-list>
+	
+		
+		<div style="padding-top:2.5rem !important;">
+			<p class="acess" text-center>Already have account?
+				<span class="guest" (click)="onSignin()">Login</span>
+			</p>
+		</div>
+	
+	</form>
+
+
+</ion-content>

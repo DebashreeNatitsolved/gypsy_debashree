@@ -1,0 +1,24 @@
+page-search {
+
+    .title .toolbar-title{ text-align: center;}
+    .title .toolbar-title img{ max-width: 38%;}
+    .list-header{ background: #dbdbdb;  border-bottom:0; text-transform: inherit;}
+    .item ion-label{
+        font-size: 16px;
+        font-weight: 500;
+        color: #2f2f2f;
+        padding-left: 12px;
+        border-bottom: 1px solid #afafaf;
+        padding-bottom: 10px;
+        margin-bottom: 5px;
+        padding: 10px;
+        background: #fcfcfc;
+    }
+    .item ion-label:focus{
+        color: red;
+    }
+    .item-md.item-block .item-inner{
+        border-bottom: 0;
+    }
+
+}

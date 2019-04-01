@@ -1,0 +1,29 @@
+page-settings {
+    .item{
+        border-bottom: #eee 1px solid;
+        color: #555;
+        padding: 7px;
+        border-top: none !important;
+        font-size: 15px;
+        &:last-child{
+            border-bottom: none !important;
+        }
+        .item-inner{
+            border-bottom: none !important;
+        }
+        
+        ion-icon{
+            font-size: 2rem !important;
+            color: #777;
+        }
+    }
+    .item-md ion-icon[item-start] + .item-inner, .item-md ion-icon[item-left] + .item-inner{
+        background-image: url(../../assets/img/right-arrow.svg);
+        padding-right: 32px;
+        background-position: right 14px center;
+        background-position: right calc(14px + constant(safe-area-inset-right)) center;
+        background-position: right calc(14px + env(safe-area-inset-right)) center;
+        background-repeat: no-repeat;
+        background-size: 14px 14px;
+    }
+}

@@ -1,0 +1,99 @@
+<!--
+  Generated template for the WishlistPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title> My Activity </ion-title>
+    <ion-buttons end class="position-rel">
+        <div class="cart-amnt">{{noofcart}}</div>
+        <button ion-button icon-only (click)="goToCartPage()">
+          <ion-icon name="cart"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+
+   <ion-toolbar no-border-top>
+    <div>
+      <ion-segment [(ngModel)]="pet">
+        <ion-segment-button value="wishlist">
+           Wishlist
+        </ion-segment-button>
+        <ion-segment-button value="likes">
+           Likes
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+  </ion-toolbar>
+  
+</ion-header>
+
+
+<ion-content> 
+  <div [ngSwitch]="pet">
+    <ion-list *ngSwitchCase="'wishlist'">
+      <div  *ngIf="productList !=''">
+      <ion-card *ngFor="let productlist of productList">
+        <ion-item>
+          <ion-thumbnail item-start *ngIf="productlist.ProductImage" (click)="gotoDetails(productlist.Product.id)">
+            <img style="height: 80px;width: 80px;" src="{{imageurl+productlist.ProductImage}}">
+          </ion-thumbnail>
+
+          <ion-thumbnail item-start  (click)="gotoDetails(productlist.Product.id)" *ngIf="!productlist.ProductImage">
+            <img  style="height: 80px;width: 80px;" src="assets/img/noimage.png" alt="">
+          </ion-thumbnail>
+
+
+
+          <h2>{{productlist.Product.product_name}}</h2>
+          <h2 class="price"  *ngIf="productlist.Product.price!=0">${{productlist.Product.price}}</h2>
+              <h2 class="price" *ngIf="productlist.Product.price==0">TBD</h2>
+          <button ion-button  class="btn-dark" (click)="addtoCart(productlist.Product.id)" > <ion-icon name="cart"></ion-icon>Add to cart</button>
+          <button ion-button class="btn-primary" (click)="deletewishList(productlist.Wishlist.id)"> <ion-icon name="md-trash"></ion-icon>Remove</button>
+        </ion-item>
+      </ion-card>
+
+
+       
+      </div>
+      <div *ngIf="productList ==''" style="text-align:center;">{{message}}</div>
+    </ion-list>
+   
+
+    <ion-list *ngSwitchCase="'likes'" >
+<div *ngIf="likelist !=''">
+        <ion-card *ngFor="let item of likelist">
+           <ion-item>
+             
+        <ion-thumbnail item-start  (click)="gotoDetails(item.Product.id)" *ngIf="item.ProductImage!=undefined">
+                <img style="height: 80px;width: 80px;" src="{{imageurl+item.ProductImage}}" alt="">
+         </ion-thumbnail>
+
+           <ion-thumbnail item-start  (click)="gotoDetails(item.Product.id)" *ngIf="item.ProductImage==undefined">
+              <img style="height: 80px;width: 80px;"  src="assets/img/noimage.png" alt="">
+            </ion-thumbnail>
+
+              <h2>{{item.Product.product_name}}</h2>
+           
+              <p class="price"  *ngIf="item.Product.price!=0">${{item.Product.price}}</p>
+              <p class="price" *ngIf="item.Product.price==0">TBD</p>
+              <button ion-button class="btn-dark" (click)="addtoCart(item.Product.id)"> <ion-icon name="cart"></ion-icon>Add to cart</button>
+             
+            </ion-item> 
+          </ion-card>
+
+          
+</div>
+    </ion-list>
+    <div *ngIf="likelist ==''" style="text-align:center;">{{message}}</div>
+
+  </div>
+
+</ion-content>

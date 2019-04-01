@@ -1,0 +1,62 @@
+page-home-product-list {
+    .item-md h2 {
+        margin: 2px 0;
+        font-size: 1.6rem;
+        text-overflow: inherit;
+        white-space: nowrap;
+        overflow: inherit;
+        font-weight: normal;
+       
+    }
+
+    .main-area2 {
+        margin-bottom: 10px !important;
+    }
+    .card .card-content .row .col .card-title{ 
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 0;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        min-width: 210px;
+    }
+    .star-area{width: auto;}
+    .star-area .icon{ color: #f67401;}
+    .star-area .rate{ font-size: 1.3rem;}
+    .price{ color: #555; font-weight: 600; font-size: 1.6rem;display: inline-block;margin-top: 7px;}
+    .button{ padding: 0; margin: 0; background: none; box-shadow: none; height: auto;}
+    .button:hover:not(.disable-hover){ background-color: transparent; }
+    .button .button-inner img{ padding: 0 0.2rem 0 0; width: 21px; }
+    .like-nmbr{ color: #999999; font-size: 1.2rem;}
+    .like-total{display: flex; justify-content: space-between; align-items: center; padding-left: 2px;}
+    .like-area{width: auto; display: flex; align-items: center; flex-wrap: nowrap; flex-direction: column;}
+    .like-area h3{ font-weight: 500; font-size: 1.3rem;padding-right: 6px;;}
+
+    .like-areaL
+    {
+        width: auto; display: flex; align-items: center; flex-wrap: nowrap; flex-direction: column;
+        
+    }
+
+    .like-areaW
+    {
+        width: auto; display: flex; align-items: center; flex-wrap: nowrap; flex-direction: column;
+        
+    }
+
+    .social-area{width: auto; display: inline-flex;float: right; }
+    .social-area img{ width: 28px; height: 28px; padding: 0 !important; margin: 1rem 0.3rem;}
+
+    .card-pic
+    {
+      
+        height: 180px;
+        width: auto;
+        margin: auto;
+        object-fit: cover;
+    }
+    .scroll-content{
+        padding-bottom: 60px !important;
+    }
+}

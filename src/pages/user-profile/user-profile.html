@@ -1,0 +1,198 @@
+<!--
+  Generated template for the UserProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      User Profile
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="bg">
+  <div class="owner-pro-bnr">
+    <div class="owner-pic-area" text-center>
+      <div class="owner-pic" *ngIf="userimagepath?.length==0">
+        <img src="assets/img/noimage.png" alt="">
+      </div>
+
+      <div class="owner-pic" *ngIf="userimagepath?.length>0">
+        <img src="{{imageurl+userdata.UserImage[0].originalpath}}" alt="">
+      </div>
+      <h4>{{username}}</h4>
+      <p *ngIf="userphone">{{userphone}}</p>
+    </div>
+  </div>
+  <ion-list no-padding>
+    <div class="con-info">
+      <p class="info-c">
+        <ion-icon name="person"></ion-icon> Contact Info</p>
+      <div class="item-list">
+        <ion-item>
+          <span>User Name:</span>
+          <p>
+            <ion-icon name="person"></ion-icon>{{username}} </p>
+        </ion-item>
+
+        <ion-item *ngIf="address">
+          <span>Address:</span>
+          <p>
+            <ion-icon name="at"></ion-icon> {{address}}</p>
+        </ion-item>
+      </div>
+    </div>
+
+    <button ion-button class="follow-btn2" *ngIf="followkey==0 && signinUser==0" (click)='otheruserfollow(loginUserid)'>Follow</button>
+    <button ion-button class="follow-btn2" (click)='otheruserfollow(loginUserid)' *ngIf="followkey==1 && signinUser==0">Following</button>
+
+  </ion-list>
+
+  <ion-list-header class="item item-ios list-header list-header-ios">
+    <b>Product Likes:</b>
+  </ion-list-header>
+
+  <div class="new-arrival" *ngIf="likelistdata!=''">
+    <ion-card class="card card-ios" *ngFor="let item of likelistdata" (click)="gotodetails(item.Product.id)">
+
+      <img *ngIf="item.Product.ProductImage[0].originalpath" class="card-pic" src="{{productImageUrl+item.Product.ProductImage[0].originalpath}}">
+      <img *ngIf="!item.Product.ProductImage[0].originalpath" class="card-pic" src="assets/img/noimage.png">
+
+      <ion-card-content class="card-content card-content-ios">
+        <ion-row class="row">
+
+          <ion-col class="pl-0 pr-0 col">
+            <ion-card-title class="card-title card-title-ios">
+
+              {{item.Product.product_name}}
+
+            </ion-card-title>
+            <p class="price" *ngIf="item.Product.price!=0">${{item.Product.price}}</p>
+            <p class="price" *ngIf="item.Product.price==0">TBD</p>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div *ngIf="likelistdata==''">No Result Found</div>
+
+  <ion-list-header class="item item-ios list-header list-header-ios">
+    <b>Wishlist:</b>
+  </ion-list-header>
+  <div class="new-arrival" *ngIf="wishlistdata!=''">
+    <ion-card class="card card-ios" *ngFor="let item of wishlistdata" (click)="gotodetails(item.Product.id)">
+      <img *ngIf="item.Product.ProductImage[0].originalpath" class="card-pic" src="{{productImageUrl+item.Product.ProductImage[0].originalpath}}">
+      <img *ngIf="!item.Product.ProductImage[0].originalpath" class="card-pic" src="assets/img/noimage.png">
+      <ion-card-content class="card-content card-content-ios">
+        <ion-row class="row">
+
+          <ion-col class="pl-0 pr-0 col">
+            <ion-card-title class="card-title card-title-ios">
+
+              {{item.Product.product_name}}
+
+            </ion-card-title>
+
+            <p class="price" *ngIf="item.Product.price!=0">${{item.Product.price}}</p>
+            <p class="price" *ngIf="item.Product.price==0">TBD</p>
+          </ion-col>
+        </ion-row>
+
+      </ion-card-content>
+
+    </ion-card>
+  </div>
+
+  <div *ngIf="wishlistdata==''">No Result Found</div>
+
+  <ion-list-header class="item item-ios list-header list-header-ios">
+    <b>Recommendation:</b>
+  </ion-list-header>
+  <div class="following" *ngIf=" recommendedList!=''">
+    <ion-card class="card card-ios" *ngFor="let item of recommendedList, let i=index of recommendedList" (click)="userprofile(item.id)">
+
+      <img class="card-pic" *ngIf="item.image" src="{{item.image}}" style="height:100px; width:100px;border-radius:127px; overflow:hidden;">
+      <img class="card-pic" *ngIf="!item.image" src="assets/img/noimage.png" style="height:100px; width:100px;border-radius:127px; overflow:hidden;">
+      <ion-card-content class="card-content card-content-ios">
+        <ion-row class="row">
+
+          <ion-col class="pl-0 pr-0 col">
+            <ion-card-title class="card-title card-title-ios">
+
+              {{item.name}}
+
+            </ion-card-title>
+          </ion-col>
+        </ion-row>
+
+      </ion-card-content>
+      <button ion-button class="follow-btn" *ngIf="item.follow==0" (click)='follow(item.id,i)'>Follow</button>
+      <button ion-button class="follow-btn" *ngIf="item.follow==1" (click)='follow(item.id,i)'>Following</button>
+
+    </ion-card>
+  </div>
+  <div *ngIf="recommendedList==''">No Result Found</div>
+  <ion-list-header class="item item-ios list-header list-header-ios">
+    <b>Following:</b>
+  </ion-list-header>
+  <div class="following" *ngIf="followinglist!=''">
+    <ion-card class="card card-ios" *ngFor="let item of followinglist" (click)="userprofile(item.FollowingDetails.id)">
+
+      <img class="card-pic" *ngIf="item.FollowingDetails.imagename" src="{{imageurl+item.FollowingDetails.imagename}}" style="height:100px; width:100px;border-radius:127px; overflow:hidden;">
+      <img class="card-pic" *ngIf="!item.FollowingDetails.imagename" src="assets/img/noimage.png" style="height:100px; width:100px;border-radius:127px; overflow:hidden;">
+
+      <ion-card-content class="card-content card-content-ios">
+        <ion-row class="row">
+
+          <ion-col class="pl-0 pr-0 col">
+            <ion-card-title class="card-title card-title-ios">
+
+              {{item.FollowingDetails.first_name}} {{item.FollowingDetails.last_name}}
+
+            </ion-card-title>
+          </ion-col>
+        </ion-row>
+
+      </ion-card-content>
+
+    </ion-card>
+  </div>
+
+  <div *ngIf="followinglist==''">No Result Found</div>
+
+
+  <ion-list-header class="item item-ios list-header list-header-ios">
+    <b>Follower:</b>
+  </ion-list-header>
+  <div class="following" *ngIf="followerlist!=''">
+    <ion-card class="card card-ios" *ngFor="let item of followerlist" (click)="userprofile(item.FollowerDetails.id)">
+
+      <img class="card-pic" *ngIf="item.FollowerDetails.imagename1" src="{{imageurl+item.FollowerDetails.imagename1}}" style="height:100px; width:100px;border-radius:127px; overflow:hidden;">
+      <img class="card-pic" *ngIf="!item.FollowerDetails.imagename1" src="assets/img/noimage.png" style="height:100px; width:100px;border-radius:127px; overflow:hidden;">
+      <ion-card-content class="card-content card-content-ios">
+        <ion-row class="row">
+
+          <ion-col class="pl-0 pr-0 col">
+            <ion-card-title class="card-title card-title-ios">
+
+              {{item.FollowerDetails.first_name}} {{item.FollowerDetails.last_name}}
+
+            </ion-card-title>
+          </ion-col>
+        </ion-row>
+
+      </ion-card-content>
+
+    </ion-card>
+  </div>
+
+  <div *ngIf="followerlist==''">No Result Found</div>
+
+</ion-content>

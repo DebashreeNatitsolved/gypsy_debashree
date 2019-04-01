@@ -1,0 +1,102 @@
+page-search-result { 
+
+    .item-md h2 {
+        margin: 2px 0;
+        font-size: 1.6rem;
+        text-overflow: inherit;
+        white-space: nowrap;
+        overflow: inherit;
+        font-weight: normal;
+    }
+    .main-area2 {
+        margin-bottom: 10px !important;
+    }
+    .card .card-content .row .col .card-title{ 
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 0;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        min-width: 210px;
+    }
+    .star-area{width: auto;}
+    .star-area .icon{ color: #f67401;}
+    .star-area .rate{ font-size: 1.3rem;}
+    .price{ color: #555; font-weight: 600; font-size: 1.6rem;display: inline-block;margin-top: 7px;}
+    .button{ padding: 0; margin: 0; background: none; box-shadow: none; height: auto;}
+    .button:hover:not(.disable-hover){ background-color: transparent; }
+    .button .button-inner img{ padding: 0 0.2rem 0 0; width: 21px; }
+    .like-nmbr{ color: #999999; font-size: 1.2rem;}
+    .like-total{display: flex; justify-content: space-between; align-items: center;}
+    .like-area{width: auto; display: flex; align-items: center; flex-wrap: nowrap; flex-direction: column;}
+    .like-area h3{ font-weight: 500; font-size: 1.3rem; padding-right: 6px;}
+    .social-area{width: auto; display: inline-flex;float: right; }
+    .social-area img{ width: 28px; height: 28px; padding: 0 !important; margin: 1rem 0.3rem;}
+
+    .like-areaL
+    {
+        width: auto; display: flex; align-items: center; flex-wrap: nowrap; flex-direction: column;       
+    }
+
+    .like-areaW
+    {
+        width: auto; display: flex; align-items: center; flex-wrap: nowrap; flex-direction: column;
+        
+    }
+    .card-pic {
+        height: 200px;
+        width: auto;
+        margin: auto;
+    }
+
+    .filterbtn {
+        background-color: transparent;
+        font-size: 1.5rem;
+        color: white;
+        font-weight: 600;
+        padding-right: 25px;
+    }
+    .scroll-content{
+        padding-bottom: 60px;
+    }
+
+
+.rating-part{
+position: fixed;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.5);
+z-index: 9999999999;
+top: 0;
+left: 0;
+display: flex;
+align-items: flex-end;
+justify-content: center;
+padding-bottom: 45px;
+}
+.rating-area{
+width: 100%;
+margin: 0;
+text-align: center;
+padding: 6px 10px;
+border-radius: 0px;
+&.card .item.item-block .item-inner{
+    border-bottom: #eee 1px solid !important;
+}
+ul{
+    padding: 0;
+    text-align: center;
+    li{
+        display: inline;
+        border: 0px;
+        background: none;
+        padding: 5px 10px;
+        font-size: 20px;
+        color: rgb(60, 150, 60);
+    }
+}
+
+}
+
+}

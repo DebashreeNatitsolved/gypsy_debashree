@@ -1,0 +1,66 @@
+
+
+<ion-content padding="">
+	<div class="logo">
+		<img src="assets/img/appicon.png" alt="Ionic logo">
+	</div>
+
+	<form [formGroup]="loginForm" novalidate>
+		<ion-list>
+		
+			<ion-item>
+				<ion-input type="email" formControlName="email_address" value="" placeholder="Email address" (ngModelChange)="checkEmail($event)" required></ion-input>
+			</ion-item>
+			<p *ngIf="!loginForm.controls['email_address'].valid && loginForm.controls['email_address'].touched" ion-text color="danger">Email is required </p>			
+			<p *ngIf="!isValidEmail" ion-text color="danger">Please enter valid email id. </p>			
+			
+			<ion-item>
+				<ion-input type="password" formControlName="password" placeholder="Password" required></ion-input>
+			</ion-item>
+			<p *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched" ion-text color="danger">Password is required </p>
+			<ion-row responsive-sm>
+				<ion-col class="pt-0 pl-0">
+					<ion-item>
+						<ion-label>Remember me</ion-label>
+						<ion-checkbox color="dark" formControlName="rememberme"  checked="true"></ion-checkbox>
+					</ion-item>
+				</ion-col>
+				<ion-col class="pt-0 pr-0">
+					<p text-right (click)="goForgotPassword();">Forgot Password ?</p>
+				</ion-col>
+			</ion-row>
+			<button ion-button class="btn-primary" *ngIf="!loginForm.valid" block (click)="login(loginForm.value)">LOGIN</button>
+			<button ion-button class="btncolor" *ngIf="loginForm.valid" block (click)="login(loginForm.value)">LOGIN</button>
+		</ion-list>
+
+		<ion-row class="or-area" responsive-sm>
+			<ion-col col-3 class="pr-0 pb-0" style="display: flex; align-items: center; justify-content: flex-end;">
+				<div class="line"></div>
+			</ion-col>
+			<ion-col col-6 class="pl-0 pr-0 pb-0"> <p text-center class="or"> or connect with </p> </ion-col>
+			<ion-col col-3 class="pl-0 pb-0" style="display: flex; align-items: center; justify-content: flex-start;">
+				<div class="line"></div>
+			</ion-col>
+		</ion-row>
+
+		<ion-row responsive-sm justify-content-center>
+			<ion-col col-3 class="pr-0" text-right>
+				<img class="social-icon" src="assets/img/fb-icon.png" alt="" (click)="facebooklogin ()" >
+			</ion-col>
+			<ion-col col-3 text-center>
+				<img class="social-icon" src="assets/img/twtr-icon.png" alt="" (click)="twitterlogin()">
+			</ion-col>
+			<ion-col col-3 class="pl-0" text-left>
+				<img class="social-icon" src="assets/img/g+.png" alt="" (click)="googlepluslogin()">
+			</ion-col>
+		</ion-row>
+	
+
+		<div>
+			<p class="acess mb-0"  text-center>Or Access as a <span class="guest" (click)="gotoHome()">GUEST</span> </p>
+			<p class="acess" text-center style="margin-top:0.5rem !important;" >Don’t have any account? <span class="guest" (click)="onSignup()">Sign Up</span> </p>
+		</div>
+
+	</form>
+
+</ion-content>

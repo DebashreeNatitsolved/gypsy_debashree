@@ -1,0 +1,18 @@
+page-termscondition {
+    .item{ padding-left: 0;border:none !important;}
+    .label{ margin-right: 0; margin-bottom: 0; margin-top:0;}
+    .label h2{ font-weight: 500; color: #222222; font-size: 1.8rem;}
+    .item p {text-overflow: normal; white-space: normal; word-wrap: break-all; margin-bottom: 16px;}
+    .item.item-block .item-inner{padding-right:0; border-bottom: 0;}
+    .item [item-start]{ margin-top: 0; margin-bottom: 0; width: 10px; height: 10px;}
+    .proprietary{ width: auto;}
+    .proprietary h2{ margin-bottom: 0; font-weight: 500; font-size: 1.8rem; color: #222222; margin-top: 15px !important;}
+    .list{
+        margin-bottom: 60px;
+    }
+    @media screen and (max-width:340px){
+        .header .toolbar-title {
+            font-size: 1.2rem;
+        }
+    }
+}

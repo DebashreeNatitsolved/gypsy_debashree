@@ -1,0 +1,328 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <img src="assets/img/home-logo.png" alt="Ionic logo">
+    </ion-title>
+     
+
+    <ion-buttons end class="position-rel">
+        <button ion-button icon-only (click)="gotosearchpage()">
+            <ion-icon name="search"></ion-icon></button>
+        <div class="cart-amnt">{{noofcart}}</div>
+        <button ion-button icon-only (click)="gotoviewCart()">
+          <ion-icon name="cart"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list class="main-area">         
+          <div class="new-arrival" *ngIf="productmarketing!=''">
+              <ion-slides pager>
+              
+                <ion-slide *ngFor="let item of productmarketing; index as i" >
+                  <img class="card-pic" *ngIf="item.image!=undefined" src="{{MarketingimageUrl+item.image}}" alt="" (click)="gotoDetails(item.id)">                   
+                  <img class="card-pic" *ngIf="item.image==undefined" src="assets/img/noimage.png"alt="" (click)="gotoDetails(item.id)">
+                </ion-slide>
+                </ion-slides>    
+          </div>
+
+
+    <ion-list-header class="item item-ios list-header list-header-ios">
+      New Arrival
+      <a item-right (click)="gotoProductList('newarrival')">See All</a>
+    </ion-list-header>   
+    <div class="new-arrival"  *ngIf="newarraivalList!=''">
+       <ion-card *ngFor="let newarraival of newarraivalList; index as i">             
+        <img class="card-pic" src="{{newarraival.image}}" (click)="gotoDetails(newarraival.id)">
+        <ion-card-content>
+          <ion-row>
+            <ion-col class="pl-0 pr-0">
+              <ion-card-title>                 
+                  {{newarraival.product_name}}
+              </ion-card-title>
+              <div class="star-area">
+                  <ion-icon *ngIf="newarraival.rating>=1" name="star"></ion-icon>
+                  <ion-icon *ngIf="newarraival.rating>=2" name="star"></ion-icon>
+                  <ion-icon *ngIf="newarraival.rating>=3" name="star"></ion-icon>
+                  <ion-icon *ngIf="newarraival.rating>=4" name="star"></ion-icon>
+                  <ion-icon *ngIf="newarraival.rating>=5" name="star"></ion-icon>
+                  <ion-icon *ngIf="newarraival.rating%1!=0" name="star-half"></ion-icon>  
+                  <ion-icon *ngIf="newarraival.rating==0" name="star-outline"></ion-icon>
+                  <ion-icon *ngIf="newarraival.rating<=1" name="star-outline"></ion-icon>
+                  <ion-icon *ngIf="newarraival.rating<=2" name="star-outline"></ion-icon>
+                  <ion-icon *ngIf="newarraival.rating<=3" name="star-outline"></ion-icon>
+                  <ion-icon *ngIf="newarraival.rating<=4" name="star-outline"></ion-icon>               
+                <span class="rate">({{newarraival.rating| number:'1.2-2'}})</span>
+              </div>
+              <p class="price"  *ngIf="newarraival.price!=0">${{newarraival.price}}</p>
+              <p class="price" *ngIf="newarraival.price==0">TBD</p>
+              <div class="social-area">
+                <img src="assets/img/fb-icon.png" alt="" (click)="facebookShare(newarraival.image,newarraival.fb_link)">
+                <img src="assets/img/twtr-icon.png" alt="" (click)="twitterShare(newarraival.image,newarraival.twitter_link)">
+                <img src="assets/img/pint-icon.png" alt="" (click)="openWithInAppBrowser(newarraival.printerest_link,newarraival.image)">
+               </div>
+            </ion-col>
+            <ion-col class="pl-0 pr-0">
+              <div class="like-total">
+                <div class="like-area">  
+                  {{count}}               
+                  <button ion-button (click)="addLikelLst(newarraival.id, i,newarraival.type)">
+                    <img *ngIf="newarraival.like == 0" src="assets/img/thumb.png" alt="">
+                    <img *ngIf="newarraival.like == 1" src="assets/img/thumb-b.png" alt="">
+                    <span class="like-nmbr">({{newarraival.total_like}})</span>
+                  </button>
+                  <h3>Like</h3>
+                </div>
+                <div class="like-area">
+                  <button ion-button (click)="addWishList(newarraival.id, i,newarraival.type)">
+                    <img *ngIf="newarraival.wishlist == 0" src="assets/img/heart.png" alt="">
+                    <img *ngIf="newarraival.wishlist == 1" src="assets/img/heart-b.png" alt="">
+                    <span class="like-nmbr">({{newarraival.total_wishlist}})</span>
+                  </button>
+                  <h3>WishList</h3>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+
+    <ion-list-header class="item item-ios list-header list-header-ios"  *ngIf="bestseller!=''">
+     Best Seller
+     <a item-right (click)="gotoProductList('bestseller')">See All</a>
+    </ion-list-header>
+    <div class="new-arrival"  *ngIf="bestseller!=''">
+      <ion-card *ngFor="let bseller of bestseller, let i=index of bestseller">
+        <img class="card-pic" src="{{bseller.product_images}}" (click)="gotoDetails(bseller.id)">
+        <ion-card-content>
+          <ion-row>
+            <ion-col class="pl-0 pr-0">
+              <ion-card-title>
+                 {{bseller.product_name}}
+              </ion-card-title>
+              <div class="star-area">
+                <ion-icon *ngIf="bseller.rating>=1" name="star"></ion-icon>
+                <ion-icon *ngIf="bseller.rating>=2" name="star"></ion-icon>
+                <ion-icon *ngIf="bseller.rating>=3" name="star"></ion-icon>
+                <ion-icon *ngIf="bseller.rating>=4" name="star"></ion-icon>
+                <ion-icon *ngIf="bseller.rating>=5" name="star"></ion-icon>
+                <ion-icon *ngIf="bseller.rating%1!=0" name="star-half"></ion-icon>  
+                <ion-icon *ngIf="bseller.rating==0" name="star-outline"></ion-icon>
+                <ion-icon *ngIf="bseller.rating<=1" name="star-outline"></ion-icon>
+                <ion-icon *ngIf="bseller.rating<=2" name="star-outline"></ion-icon>
+                <ion-icon *ngIf="bseller.rating<=3" name="star-outline"></ion-icon>
+                <ion-icon *ngIf="bseller.rating<=4" name="star-outline"></ion-icon>                  
+                <span class="rate">({{bseller.rating| number:'1.2-2'}})</span>
+              </div>
+              <p class="price"  *ngIf="bseller.price!=0">${{bseller.price}}</p>
+              <p class="price" *ngIf="bseller.price==0">TBD</p>
+              <div class="social-area">
+                <img  (click)="facebookShare(bseller.product_images,bseller.fb_link)" src="assets/img/fb-icon.png" alt="">
+                <img  (click)="twitterShare(bseller.product_images,bseller.twitter_link)" src="assets/img/twtr-icon.png" alt="">
+                <img (click)="openWithInAppBrowser(bseller.printerest_link,bseller.product_images)" src="assets/img/pint-icon.png" alt="">
+              </div>
+            </ion-col>
+            <ion-col class="pl-0 pr-0">
+              <div class="like-total">
+                <div class="like-area">
+                    <button ion-button (click)="addLikelLst(bseller.id, i,bseller.type)">
+                        <img *ngIf="bseller.like == 0" src="assets/img/thumb.png" alt="">
+                        <img *ngIf="bseller.like == 1" src="assets/img/thumb-b.png" alt="">
+                        <span class="like-nmbr">({{bseller.countlike}})</span>
+                  </button>
+                  <h3>Like</h3>
+                </div>
+                <div class="like-area">
+                    <button ion-button (click)="addWishList(bseller.id, i,bseller.type)">
+                        <img *ngIf="bseller.wishlist == 0" src="assets/img/heart.png" alt="">
+                        <img *ngIf="bseller.wishlist == 1" src="assets/img/heart-b.png" alt="">
+                    <span class="like-nmbr">({{bseller.countwishlist}})</span>
+                  </button>
+                  <h3>WishList</h3>
+                </div>
+              </div>
+
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>   
+    </div>
+
+
+    <!-- recent -->
+
+    <ion-list-header class="item item-ios list-header list-header-ios" *ngIf="recentviewlist!=''">
+    Recent View
+    <a item-right (click)="gotoProductList('recentview')">See All</a>
+    </ion-list-header>
+    
+    <div class="new-arrival" *ngIf="recentviewlist!=''">
+       <ion-card *ngFor="let item of recentviewlist; index as i"> 
+              
+        <img class="card-pic" src="{{item.image}}" (click)="gotoDetails(item.id)">
+        <ion-card-content>
+          <ion-row>
+            <ion-col class="pl-0 pr-0">
+              <ion-card-title>                 
+                  {{item.product_name}}
+              </ion-card-title>
+
+              <div class="star-area">
+                <ion-icon *ngIf="item.rating>=1" name="star"></ion-icon>
+                <ion-icon *ngIf="item.rating>=2" name="star"></ion-icon>
+                <ion-icon *ngIf="item.rating>=3" name="star"></ion-icon>
+                <ion-icon *ngIf="item.rating>=4" name="star"></ion-icon>
+                <ion-icon *ngIf="item.rating>=5" name="star"></ion-icon>
+                <ion-icon *ngIf="item.rating%1!=0" name="star-half"></ion-icon>  
+                <ion-icon *ngIf="item.rating==0" name="star-outline"></ion-icon>
+                <ion-icon *ngIf="item.rating<=1" name="star-outline"></ion-icon>
+                <ion-icon *ngIf="item.rating<=2" name="star-outline"></ion-icon>
+                <ion-icon *ngIf="item.rating<=3" name="star-outline"></ion-icon>
+                <ion-icon *ngIf="item.rating<=4" name="star-outline"></ion-icon>
+              
+              <span class="rate">({{item.rating| number:'1.2-2'}})</span>
+            </div>
+              <p class="price"  *ngIf="item.price!=0">${{item.price}}</p>
+              <p class="price" *ngIf="item.price==0">TBD</p>
+              <div class="social-area">
+                <img src="assets/img/fb-icon.png" alt="" (click)="facebookShare(item.image,item.fb_link)">
+                <img src="assets/img/twtr-icon.png" alt="" (click)="twitterShare(item.image,item.twitter_link)">
+                <img src="assets/img/pint-icon.png" alt="" (click)="openWithInAppBrowser(item.printerest_link,item.image)">
+               </div>
+            </ion-col>
+            <ion-col class="pl-0 pr-0">
+              <div class="like-total">
+                <div class="like-area">  
+                  {{count}}               
+                  <button ion-button (click)="addLikelLst(item.id, i,item.type)">
+                    <img *ngIf="item.like == 0" src="assets/img/thumb.png" alt="">
+                    <img *ngIf="item.like == 1" src="assets/img/thumb-b.png" alt="">
+                    <span class="like-nmbr">({{item.total_like}})</span>
+                  </button>
+                  <h3>Like</h3>
+                </div>
+                <div class="like-area">
+                    <button ion-button (click)="addWishList(item.id, i,item.type)">
+                        <img *ngIf="item.wishlist == 0" src="assets/img/heart.png" alt="">
+                        <img *ngIf="item.wishlist == 1" src="assets/img/heart-b.png" alt="">
+                    <span class="like-nmbr">({{item.total_wishlist}})</span>
+                  </button>
+                  <h3>WishList</h3>
+                </div>
+              </div>
+
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+
+    </div>
+<!-- recent -->
+
+
+
+    <ion-list-header class="item item-ios list-header list-header-ios" *ngIf="follow_products!=''">
+      Product Recommendation
+      <a item-right (click)="gotoProductList('recommendation')">See All</a>
+     </ion-list-header>
+     <div class="new-arrival" *ngIf="follow_products!=''">
+       <ion-card *ngFor="let product of follow_products, let i=index of follow_products">
+         <img class="card-pic"  *ngIf="product.image!=undefined" src="{{recommenproductimage+product.image}}" (click)="gotoDetails(product.id)">
+         <img class="card-pic"  *ngIf="product.image==undefined" src="assets/img/noimage.png" (click)="gotoDetails(product.id)">
+         <ion-card-content>
+           <ion-row>
+             <ion-col class="pl-0 pr-0">
+               <ion-card-title>
+                  {{product.product_name}}
+               </ion-card-title>
+               <div class="star-area">
+                <ion-icon *ngIf="product.rating>=1" name="star"></ion-icon>
+                <ion-icon *ngIf="product.rating>=2" name="star"></ion-icon>
+                <ion-icon *ngIf="product.rating>=3" name="star"></ion-icon>
+                <ion-icon *ngIf="product.rating>=4" name="star"></ion-icon>
+                <ion-icon *ngIf="product.rating>=5" name="star"></ion-icon>
+                <ion-icon *ngIf="product.rating%1!=0" name="star-half"></ion-icon>  
+                <ion-icon *ngIf="product.rating==0" name="star-outline"></ion-icon>
+                <ion-icon *ngIf="product.rating<=1" name="star-outline"></ion-icon>
+                <ion-icon *ngIf="product.rating<=2" name="star-outline"></ion-icon>
+                <ion-icon *ngIf="product.rating<=3" name="star-outline"></ion-icon>
+                <ion-icon *ngIf="product.rating<=4" name="star-outline"></ion-icon>
+     
+                 <span class="rate">({{product.rating| number:'1.2-2'}})</span>
+                 
+               </div>
+               <p class="price"  *ngIf="product.price!=0">${{product.price}}</p>
+              <p class="price" *ngIf="product.price==0">TBD</p>
+               <div class="social-area">
+                <img  (click)="facebookShare(recommenproductimage+product.image,product.fb_link)" src="assets/img/fb-icon.png" alt="">
+                <img (click)="twitterShare(recommenproductimage+product.image,product.twitter_link)" src="assets/img/twtr-icon.png" alt="">
+                <img (click)="openWithInAppBrowser(product.printerest_link,recommenproductimage+product.image)" src="assets/img/pint-icon.png" alt="">
+              </div>
+             </ion-col>
+             <ion-col class="pl-0 pr-0">
+               <div class="like-total">
+                 <div class="like-area">
+                    <button ion-button (click)="addLikelLst(product.id, i,product.type)">
+                        <img *ngIf="product.like == 0" src="assets/img/thumb.png" alt="">
+                        <img *ngIf="product.like == 1" src="assets/img/thumb-b.png" alt="">
+                     <span class="like-nmbr">({{product.total_like}})</span>
+                   </button>
+                   <h3>Like</h3>
+                 </div>
+                 <div class="like-area">
+                    <button ion-button (click)="addWishList(product.id, i,product.type)">
+                        <img *ngIf="product.wishlist == 0" src="assets/img/heart.png" alt="">
+                        <img *ngIf="product.wishlist == 1" src="assets/img/heart-b.png" alt="">
+                     <span class="like-nmbr">({{product.total_wishlist}})</span>
+                   </button>
+                   <h3>WishList</h3>
+                 </div>
+               </div>
+
+             </ion-col>
+           </ion-row>
+         </ion-card-content>
+       </ion-card>
+     
+     </div>
+
+
+     <!-- following -->
+     <ion-list-header class="item item-ios list-header list-header-ios" >
+        Category
+        </ion-list-header>           
+             <div class="following" *ngIf="followinglist!=''">
+                <ion-card *ngFor="let item of followinglist; index as i"  (click)="underPriceProdctList(item.category_name)" > 
+                       
+                 <img class="card-pic" *ngIf="item.image" src="{{item.image}}" style="width: 21px;height: 20px;" >
+                 <img class="card-pic"  *ngIf="!item.image" src="assets/img/noimage.png" style="width: 21px;height: 20px;" >
+                 <ion-card-content>
+                   <ion-row>
+                     <ion-col class="pl-0 pr-0">
+                       <ion-card-title>                 
+                           {{item.category_name}}
+                       </ion-card-title>
+                     </ion-col>                     
+                   </ion-row>                  
+                 </ion-card-content>
+               </ion-card>        
+             </div>   
+  </ion-list>
+  
+
+</ion-content>

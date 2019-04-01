@@ -1,0 +1,58 @@
+page-review {
+    .content{ background-color: #e2e2e2;}
+    .item ion-thumbnail img{ height: auto; }
+    .item .label h2{ color: #000000; font-weight: 600;  
+        word-wrap: break-all;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .price{ color: #c60626 !important; padding: 8px 0;}
+    .item .item-button{ font-size: 1.5rem; text-transform: inherit; font-weight: 500; box-shadow: none;}
+    .item .item-button .icon{ padding-right: 0.5rem; font-size: 1.9rem;}
+    .position-rel{ position: relative;}
+    .cart-amnt{ background-color: #519120; position: absolute; width: 18px; height: 18px; z-index: 100; border-radius: 50%; top: -4px; right: 0; text-align: center; color: #ffffff;}
+    .note{ align-self: flex-start; color: #777777; }
+    .list{
+        margin-bottom: 60px;
+    }
+    .card{
+        box-shadow: 0 0 10px rgba(0,0,0,.1);
+    }
+
+
+    .star-area{width: auto;}
+    .star-area .icon{ color: #f67401;}
+    .star-area .rate{ font-size: 1.3rem;}
+
+    .item-ios p {
+        overflow: inherit;
+        font-size: 1.2rem;
+         color: #8e9093;
+        margin: 0 0 2px;
+    }
+    .item-tille-cus{
+        width: 55%;
+        display: inline-block;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+    .time-end{
+        overflow: inherit;
+        text-overflow: inherit;
+        display: inline-block;
+        margin: 0 !important;
+        font-size: 10px !important;
+        color: #777 !important;
+        width: 40%;
+        text-align: right;
+    }
+    h2{
+       
+    }
+    .custom-item .label{
+        margin-top: 0;
+    }
+}

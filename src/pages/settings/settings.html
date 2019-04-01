@@ -1,0 +1,85 @@
+<!--
+  Generated template for the SettingsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding> 
+      <div style="padding-bottom:70px">
+        <ion-list>      
+    
+          <button menuClose ion-item icon-left *ngIf="isexist==1" (click)="openPage('UserProfilePage')">
+              <ion-icon item-start="" role="img" class="icon icon-md ion-md-person item-icon" aria-label="person" ng-reflect-name="person"></ion-icon>
+           My Profile
+          </button>
+
+          <button menuClose ion-item icon-left *ngIf="isexist==1" (click)="openPage('EditProfilePage')">
+            <ion-icon  item-start="" name="create"></ion-icon>
+         Edit Profile
+        </button>
+    
+          <button menuClose ion-item icon-left  *ngIf="isexist==1" (click)="openPage('WishlistPage')">
+              <ion-icon item-start="" role="img" class="icon icon-md ion-md-heart item-icon" aria-label="heart" ng-reflect-name="heart"></ion-icon>
+           My Activity
+          </button>
+                    
+    
+          <button menuClose ion-item icon-left *ngIf="isexist==1" (click)="openPage('ChangePasswordPage')">
+              <ion-icon item-start="" role="img" class="icon icon-md ion-md-key item-icon" aria-label="key" ng-reflect-name="key"></ion-icon>
+           Change Password
+          </button>
+    
+    
+          <button menuClose ion-item icon-left *ngIf="isexist==1" (click)="openPage('ReviewPage')">
+              <ion-icon item-start="" role="img" class="icon icon-md ion-md-star item-icon" aria-label="star" ng-reflect-name="star" ng-reflect-color="primary"></ion-icon>
+    
+             My Review
+            </button>
+
+
+            <button menuClose ion-item icon-left *ngIf="isexist==1" (click)="openPage('AllUserPage')">
+              <ion-icon item-start="" role="img" class="icon icon-md ion-md-person item-icon" aria-label="person" ng-reflect-name="person" ng-reflect-color="primary"></ion-icon>
+    
+            User List
+            </button>
+
+            <button menuClose ion-item icon-left *ngIf="isexist==0" (click)="openPage('LoginPage')">
+                <ion-icon item-start="" role="img" class="icon icon-md ion-md-person item-icon" aria-label="person" ng-reflect-name="person" ng-reflect-color="primary"></ion-icon>
+      
+              Sign-up
+              </button>
+
+              <button menuClose ion-item icon-left *ngIf="isexist==0" (click)="openPage('LoginPage')">
+                  <ion-icon item-start="" role="img" class="icon icon-md ion-md-person item-icon" aria-label="person" ng-reflect-name="person" ng-reflect-color="primary"></ion-icon>
+        
+                Sign-in
+                </button>
+    
+          <button menuClose ion-item icon-left (click)="openPage('PrivacyPage')">
+            <ion-icon item-left name="ios-list-box-outline" ></ion-icon>
+             Privacy Policy
+          </button>
+    
+          <button menuClose ion-item icon-left (click)="openPage('TermsconditionPage')">
+              <ion-icon item-start="" role="img" class="icon icon-md ion-md-copy item-icon" aria-label="copy" ng-reflect-name="copy"></ion-icon>
+               Terms & Conditions
+          </button>
+    
+          <button menuClose ion-item icon-left *ngIf="isexist==1" (click)="logout()">
+            <ion-icon item-left name="md-log-out"></ion-icon>
+            Logout
+          </button>
+    
+        </ion-list>
+      </div>
+      </ion-content>
+

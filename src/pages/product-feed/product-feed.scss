@@ -1,0 +1,31 @@
+page-product-feed {
+
+    img.card-pic {
+        
+        width: 120px;       
+        margin: 20px auto 0;       
+    }
+    .card-title {
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    card-md p {
+        margin: 0 0 2px;
+        font-size: 1.4rem;
+        font-weight: normal;
+        line-height: 1.5;
+        color: #222;
+        white-space: nowrap;
+        max-width: 98%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .social {
+        width:35px; 
+        float: right; 
+        padding: 5px;
+    }
+
+}

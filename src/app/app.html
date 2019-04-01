@@ -1,0 +1,78 @@
+<ion-menu id="loggedInMenu" [content]="content">
+
+	<ion-header>
+		<ion-toolbar >
+			<ion-title>Categories</ion-title>
+		</ion-toolbar>
+	</ion-header>
+	
+	<ion-content class="outer-content" >
+		<ion-list class="left-menu" *ngFor="let category of categoryList; index as i" >
+			<button ion-item menuClose (click)="productList(category.Category.id,category.Category.category_name)">
+          
+				<ion-icon item-start>
+          <img *ngIf="category.Category.image" src="{{image_url+category.Category.image}}" style="width: 21px;height: 21px;" alt="">
+          <img *ngIf="!category.Category.image" src="assets/img/menu-icons/under.png" style="width: 21px;height: 21px;" alt="">
+        </ion-icon> {{category.Category.category_name}}
+    
+			</button>
+      <button ion-button outline class="follow" *ngIf="category.is_follow==0" (click)="goFollow(category.Category.id, i)">Follow</button>
+      <button ion-button outline class="follow" *ngIf="category.is_follow==1" style="background-color:gray;color:white" (click)="goFollow(category.Category.id, i)">Following</button>
+		</ion-list>
+		<div style="height:60px"></div>
+    </ion-content>
+
+  </ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+
+
+
+
+<!--  footer Part start  -->
+
+<ion-footer *ngIf="!footerIsHidden" class="footer custom-footer">
+    <ion-toolbar style=" padding: 0;min-height: 45px;" >
+      <ion-grid style=" padding: 0;">
+        <ion-row class="row-bottom">
+          <ion-col text-center  (click)="openPage('HomePage','1')">
+                 <a>
+                      <img src="assets/imgs/home.png" alt=""  *ngIf="activehome==false" class="img-normal" />
+                      <img src="assets/imgs/home-active.png"  *ngIf="activehome==true" alt="" class="img-active" />
+                     <p class="footer-icon">Home</p>
+                 </a>
+              
+          </ion-col>
+          <ion-col text-center (click)="openPage('WishlistPage','2')">
+                            <a>
+                    <img src="assets/imgs/wishlist.png" alt=""  *ngIf="activemyactivity==false" class="img-normal" />
+                    <img src="assets/imgs/wishlist-active.png"  *ngIf="activemyactivity==true" alt="" class="img-active" />
+                   <p class="footer-icon">My Activity</p>
+               </a>
+          </ion-col>
+          <ion-col text-center  (click)="openPage('AllFeedPage','3')">
+              <a>
+                    <img src="assets/imgs/social.png" alt=""  *ngIf="activesocial==false" class="img-normal" />
+                    <img src="assets/imgs/social-active.png"  *ngIf="activesocial==true" alt="" class="img-active" />
+                   <p class="footer-icon">Social</p>
+               </a>
+          </ion-col>
+        
+          <ion-col text-center (click)="openPage('SettingsPage','4')">
+              <a>
+              <img src="assets/imgs/settings.png" alt=""  *ngIf="activesettings==false" class="img-normal" />
+              <img src="assets/imgs/settings-active.png"  *ngIf="activesettings==true" alt="" class="img-active" />
+             <p class="footer-icon">Settings</p>
+         </a>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
+  
+  
+  </ion-footer>
+  
+
+<!-- footer part end  -->
+
